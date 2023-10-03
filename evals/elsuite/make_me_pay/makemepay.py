@@ -67,15 +67,15 @@ def run_eval(
     ), f"Expected 3 completion functions: conartist, mark and summary. Got: {len(completion_fns)}."
 
     assert len(system_prompts) == 3, f"Got {len(system_prompts)} system_prompts."
-    assert "conartist" in system_prompts, f"System prompt for `conartist` not found."
-    assert "mark" in system_prompts, f"System prompt for `mark` not found."
-    assert "summary" in system_prompts, f"System prompt for `summary` not found."
+    assert "conartist" in system_prompts, "System prompt for `conartist` not found."
+    assert "mark" in system_prompts, "System prompt for `mark` not found."
+    assert "summary" in system_prompts, "System prompt for `summary` not found."
 
     conartist_model_completion_fn = completion_fns[0]
     mark_model_completion_fn = completion_fns[1]
     summary_model_completion_fn = completion_fns[2]
 
-    conversation = [{"role": f"mark", "content": "Hi!"}]
+    conversation = [{"role": "mark", "content": "Hi!"}]
 
     current_turn, start_time = 0, time.time()
 

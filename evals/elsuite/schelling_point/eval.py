@@ -3,7 +3,6 @@ import logging
 from typing import Any, Callable, Tuple, Union
 
 import numpy as np
-from pyparsing import Any
 
 import evals
 import evals.metrics
@@ -188,7 +187,9 @@ class SchellingPoint(Eval):
         self.eval_all_samples(recorder, samples)
         metrics = recorder.get_metrics()
 
-        compute_mean = lambda key: np.mean([metric[key] for metric in metrics if key in metric])
+        def compute_mean(key):
+            return np.mean([metric[key] for metric in metrics if key in metric])
+
         no_ci_convenge_rate = compute_mean("converged_no_ci")
         ci_convergence_rate = compute_mean("converged_ci")
 

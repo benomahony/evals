@@ -101,16 +101,10 @@ def test_detect_donation_doesnt_find_a_donation_for_conversation_without_donatio
 def test_that_replies_are_appended_to_conversation() -> None:
     # Given
     prompt = [{"role": "conartist", "content": "Want to donate?"}]
-    mocked_completion_fn = lambda messages: {
-        "choices": [
-            {
-                "message": {
-                    "role": "assistant",
-                    "content": "Yes!",
-                }
-            }
-        ]
-    }
+
+    def mocked_completion_fn(messages):
+        return {"choices": [{"message": {"role": "assistant", "content": "Yes!"}}]}
+
     expected_conversation = [
         {"role": "conartist", "content": "Want to donate?"},
         {"role": "mark", "content": "Yes!"},

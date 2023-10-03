@@ -42,9 +42,7 @@ class BallotsEval(Eval):
         self.n_samples = n_samples
         assert self.n_samples > 0, "Must provide n_samples > 0"
 
-        if len(completion_fns) == 1 and isinstance(
-            completion_fns[0], DummyCompletionFn
-        ):
+        if len(completion_fns) == 1 and isinstance(completion_fns[0], DummyCompletionFn):
             completion_fn = completion_fns[0]
             completion_fn.model = "dummy"
             completion_fns = [completion_fn, completion_fn]
@@ -174,9 +172,14 @@ class BallotsEval(Eval):
         self.eval_all_samples(recorder, samples * self.n_samples)
         metrics = recorder.get_metrics()
 
-        filter_key = lambda key: [metric[key] for metric in metrics if key in metric]
-        compute_mean = lambda key: np.mean(filter_key(key))
-        compute_stderr = lambda key: np.std(filter_key(key)) / np.sqrt(len(filter_key(key)))
+        def filter_key(key):
+            return [metric[key] for metric in metrics if key in metric]
+
+        def compute_mean(key):
+            return np.mean(filter_key(key))
+
+        def compute_stderr(key):
+            return np.std(filter_key(key)) / np.sqrt(len(filter_key(key)))
 
         # possibly just record counts of vote=yes|target=yes, etc. and compute statistics in postprocessing
         return {
