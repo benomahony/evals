@@ -47,7 +47,9 @@ class DummyCompletionResult(CompletionResult):
 
 class DummyCompletionFn(CompletionFn):
     def __call__(
-        self, prompt: Union[OpenAICreatePrompt, OpenAICreateChatPrompt, Prompt], **kwargs
+        self,
+        prompt: Union[OpenAICreatePrompt, OpenAICreateChatPrompt, Prompt],
+        **kwargs,
     ) -> CompletionResult:
         return DummyCompletionResult()
 

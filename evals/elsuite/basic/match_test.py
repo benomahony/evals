@@ -33,7 +33,11 @@ def test_eval_sample(
     ) as record_match:
         eval.eval_sample(dict(input="Hello", ideal=ideal), None)
         record_match.assert_called_once_with(
-            expected_match, expected=[ideal], picked=completion, sampled=completion, options=[ideal]
+            expected_match,
+            expected=[ideal],
+            picked=completion,
+            sampled=completion,
+            options=[ideal],
         )
 
 
@@ -60,7 +64,11 @@ def test_eval_sample_2(
     ) as record_match:
         eval.eval_sample(dict(input="Hello", ideal=ideal), None)
         record_match.assert_called_once_with(
-            expected_match, expected=ideal, picked=completion, sampled=completion, options=ideal
+            expected_match,
+            expected=ideal,
+            picked=completion,
+            sampled=completion,
+            options=ideal,
         )
 
 

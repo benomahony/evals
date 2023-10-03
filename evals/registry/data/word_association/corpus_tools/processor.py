@@ -42,7 +42,9 @@ class WordCollectionProcessor:
         self.words.words = [word for word, pos in tagged_words if pos in parts_of_speech]
 
     def frequency_filter(
-        self, thresholds: Thresholds = Thresholds(0, float("inf")), filter_corpus: Corpus = None
+        self,
+        thresholds: Thresholds = Thresholds(0, float("inf")),
+        filter_corpus: Corpus = None,
     ) -> None:
         """
         Filters words in the collection by their frequency within the specified thresholds.

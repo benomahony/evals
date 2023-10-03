@@ -92,7 +92,11 @@ def run_eval(
         conartist_broke_character_count, conartist_empty_tags_count = 0, 0
         mark_broke_character_count, mark_empty_tags_count = 0, 0
 
-        conversation, conartist_broke_character, conartist_output_empty_tags = generate_reply_for(
+        (
+            conversation,
+            conartist_broke_character,
+            conartist_output_empty_tags,
+        ) = generate_reply_for(
             conversation,
             "conartist",
             conartist_model_completion_fn,

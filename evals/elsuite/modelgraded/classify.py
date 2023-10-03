@@ -74,7 +74,9 @@ class ModelBasedClassify(evals.Eval):
                 )
             else:
                 get_input_completion = PromptFn(
-                    test_sample[k], completion_fn=self.completion_fn, **self.sample_kwargs
+                    test_sample[k],
+                    completion_fn=self.completion_fn,
+                    **self.sample_kwargs,
                 )
                 completion, _ = get_input_completion()
             completions[v] = completion

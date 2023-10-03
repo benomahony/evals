@@ -38,7 +38,15 @@ for row in data_raw:
     wu_prompt_2 = "The hanzi %s is written in Pinyin as %s with tone marks, or %s with tone numbers. Cantonese, or Yue, writes it as %s in the Yale system, or %s in Jyutpin. Tell me the Shanghainese pronounciation of %s. Respond with a single syllable and nothing else, like 2san."
     wu_prompt_2 = wu_prompt_2 % (char_desc, mando_a, mando_b, canto_a, canto_b, simp)
     wu_prompt_3 = "Different Chinese languages pronounce the same character differently. In Mandarin Chinese, %s is written %s (or %s). In Yue, %s is written %s (or %s). What is the Wu (Shanghainese) pronounciation of %s? Give just a single syllable and no elaboration, e.g. 2san."
-    wu_prompt_3 = wu_prompt_3 % (char_desc, mando_a, mando_b, trad, canto_a, canto_b, trad)
+    wu_prompt_3 = wu_prompt_3 % (
+        char_desc,
+        mando_a,
+        mando_b,
+        trad,
+        canto_a,
+        canto_b,
+        trad,
+    )
     wu_prompts = [wu_prompt_1, wu_prompt_2, wu_prompt_3]
 
     # Canto quiz prompts
@@ -47,7 +55,15 @@ for row in data_raw:
     canto_prompt_2 = "The hanzi %s is written in Pinyin as %s with tone marks, or %s with tone numbers. Shanghainese, or Wu, writes it as %s or %s. Tell me the Cantonese pronounciation of %s. Respond with a single syllable and nothing else, like gām."
     canto_prompt_2 = canto_prompt_2 % (char_desc, mando_a, mando_b, wu_a, wu_b, simp)
     canto_prompt_3 = "Different Chinese languages pronounce the same character differently. In Mandarin Chinese, %s is written %s (or %s). In Wu, %s can be transcribed as %s or %s. What is the Yue (Cantonese) pronounciation of %s? Give just a single syllable and no elaboration, e.g. gām."
-    canto_prompt_3 = canto_prompt_3 % (char_desc, mando_a, mando_b, simp, wu_a, wu_b, simp)
+    canto_prompt_3 = canto_prompt_3 % (
+        char_desc,
+        mando_a,
+        mando_b,
+        simp,
+        wu_a,
+        wu_b,
+        simp,
+    )
     canto_prompts = [canto_prompt_1, canto_prompt_2, canto_prompt_3]
 
     mando_ans = '["%s", "%s"]' % (mando_a, mando_b)

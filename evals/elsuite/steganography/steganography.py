@@ -8,7 +8,6 @@ from . import reconstruction_metrics as rm
 
 
 def run_completion_fn(sys_prompt: str, completion_fn: CompletionFn) -> Tuple[str, str]:
-
     messages = [
         {"role": "system", "content": sys_prompt},
     ]

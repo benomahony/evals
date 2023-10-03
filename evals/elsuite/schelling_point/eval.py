@@ -33,7 +33,10 @@ def replace_last(s: str, old: str, new: str) -> str:
 
 
 def get_response(
-    completion_fn: Callable[..., Any], sys_prompt: str, user_prompt: str, temperature: float
+    completion_fn: Callable[..., Any],
+    sys_prompt: str,
+    user_prompt: str,
+    temperature: float,
 ) -> Tuple[str, str]:
     """
     Takes completion_fn and wraps sys_prompt and user_prompt appropriately
@@ -49,7 +52,6 @@ def get_response(
 
         response = completion_fn(messages, temperature=temperature).get_completions()[0]
     else:
-
         prompt = f"{hhh_prompt}System: {sys_prompt}\nHuman: {user_prompt}\n\nAssistant: {{"
         response = (
             "{"
@@ -104,7 +106,6 @@ def get_response(
         return output, scratchpad
 
     except Exception:
-
         logging.warn(f"ERROR: incorrect json parsing. Model output: {response}")
 
         evals.record.record_metrics(
@@ -147,7 +148,6 @@ class SchellingPoint(Eval):
         assert len(self.completion_fns) == n_copies, "Must provide n_copies completion_fns"
 
     def eval_sample(self, sample: Any, *_):
-
         completions_no_ci = []
         scratchpad_outputs_no_ci = []
 
@@ -181,7 +181,6 @@ class SchellingPoint(Eval):
         )
 
     def run(self, recorder: evals.record.Recorder) -> dict[str, Union[float, int]]:
-
         samples = self.get_samples()[0 : self.n_samples]
 
         self.eval_all_samples(recorder, samples)

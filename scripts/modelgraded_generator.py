@@ -5,6 +5,7 @@ import string
 # Define the registry path
 REGISTRY_PATH = os.path.join(os.path.dirname(__file__), "../evals/registry")
 
+
 # Define a function to format a template string with kwargs
 def format(template: str, **kwargs: str) -> str:
     """Format a template string with kwargs."""

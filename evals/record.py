@@ -311,7 +311,10 @@ class LocalRecorder(RecorderBase):
     """
 
     def __init__(
-        self, log_path: Optional[str], run_spec: RunSpec, hidden_data_fields: Sequence[Text] = []
+        self,
+        log_path: Optional[str],
+        run_spec: RunSpec,
+        hidden_data_fields: Sequence[Text] = [],
     ):
         """
         Initializes a LocalRecorder.

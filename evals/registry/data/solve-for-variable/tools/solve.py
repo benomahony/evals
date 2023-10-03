@@ -117,7 +117,10 @@ class Equation:
 
             elif self.right.op == "+":
                 self.left = Expression(
-                    Prio.ADD_SUB, "-" if correct else "+", self.left, self.right.args[1 - arg_pos]
+                    Prio.ADD_SUB,
+                    "-" if correct else "+",
+                    self.left,
+                    self.right.args[1 - arg_pos],
                 )
                 self.left._simplify_in_situ()
                 self.right = self.right.args[arg_pos]
@@ -125,32 +128,47 @@ class Equation:
             elif self.right.op == "-":
                 if arg_pos == 0:
                     self.left = Expression(
-                        Prio.ADD_SUB, "+" if correct else "-", self.left, self.right.args[1]
+                        Prio.ADD_SUB,
+                        "+" if correct else "-",
+                        self.left,
+                        self.right.args[1],
                     )
                     self.left._simplify_in_situ()
                     self.right = self.right.args[0]
                 else:
                     self.left = Expression(
-                        Prio.ADD_SUB, "-" if correct else "+", self.right.args[0], self.left
+                        Prio.ADD_SUB,
+                        "-" if correct else "+",
+                        self.right.args[0],
+                        self.left,
                     )
                     self.left._simplify_in_situ()
                     self.right = self.right.args[1]
 
             elif self.right.op == "*":
                 self.left = Expression(
-                    Prio.MUL_DIV, "/" if correct else "*", self.left, self.right.args[1 - arg_pos]
+                    Prio.MUL_DIV,
+                    "/" if correct else "*",
+                    self.left,
+                    self.right.args[1 - arg_pos],
                 )
                 self.right = self.right.args[arg_pos]
 
             elif self.right.op == "/":
                 if arg_pos == 0:
                     self.left = Expression(
-                        Prio.MUL_DIV, "*" if correct else "/", self.left, self.right.args[1]
+                        Prio.MUL_DIV,
+                        "*" if correct else "/",
+                        self.left,
+                        self.right.args[1],
                     )
                     self.right = self.right.args[0]
                 else:
                     self.left = Expression(
-                        Prio.MUL_DIV, "/" if correct else "*", self.right.args[0], self.left
+                        Prio.MUL_DIV,
+                        "/" if correct else "*",
+                        self.right.args[0],
+                        self.left,
                     )
                     self.right = self.right.args[1]
 

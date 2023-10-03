@@ -19,6 +19,7 @@ INSTRUCTION = (
 )
 TASK_NAME = "pattern_identification"
 
+
 # This function generates an example symbol set and its corresponding label
 def generate_example() -> tuple[str, list[str], Literal["foo", "bar"]]:
     num_symbols = int(len(SYMBOLS) / 2)
@@ -28,7 +29,8 @@ def generate_example() -> tuple[str, list[str], Literal["foo", "bar"]]:
     return (target_symbol, symbol_list, target)
 
 
-# This function generates a string of multiple examples, used to give a user multiple attempts to identify the pattern
+# This function generates a string of multiple examples,
+# used to give a user multiple attempts to identify the pattern
 def generate_exemplars_str(num_exemplars: int = 8) -> str:
     exemplars = [generate_example() for _ in range(num_exemplars)]
     exemplars_str = [

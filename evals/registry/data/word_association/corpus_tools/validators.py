@@ -239,7 +239,8 @@ class GPTValidator(QualityValidator):
         """
         if correlation_prompt is None:
             correlation_prompt = CORRELATION_PROMPT_TEMPLATE.format(
-                word=related_words_pair.word, related_words=related_words_pair.related_words
+                word=related_words_pair.word,
+                related_words=related_words_pair.related_words,
             )
         if answer_prompt is None:
             answer_prompt = ANSWER_PROMPT_TEMPLATE

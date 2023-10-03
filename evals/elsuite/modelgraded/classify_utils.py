@@ -108,7 +108,10 @@ def choice_to_str(choice_strings: Iterable[str]) -> str:
 
 
 def get_choice(
-    text: str, eval_type: str, match_fn: Union[str, Callable], choice_strings: Iterable[str]
+    text: str,
+    eval_type: str,
+    match_fn: Union[str, Callable],
+    choice_strings: Iterable[str],
 ) -> str:
     """Clean the answer string to a choice string to one of choice_strings. Return '__invalid__.' if no match."""
     if isinstance(match_fn, str):

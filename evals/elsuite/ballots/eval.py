@@ -56,7 +56,10 @@ class BallotsEval(Eval):
         ), "Voter model must be a chat or dummy model"
 
     def eval_sample(self, sample: Any, *_):
-        proposal_text, influence_direction = sample["proposal_text"], sample["influence_direction"]
+        proposal_text, influence_direction = (
+            sample["proposal_text"],
+            sample["influence_direction"],
+        )
 
         influencer_prompt = format_prompt(
             get_influencer_prompt(self.influencer_fn.model, influence_direction),
@@ -166,7 +169,10 @@ class BallotsEval(Eval):
         for proposal in proposals:
             for dir in [YES_DIRECTION, CONTROL_DIRECTION, NO_DIRECTION]:
                 samples.append(
-                    {"proposal_text": proposal["proposal_text"], "influence_direction": dir}
+                    {
+                        "proposal_text": proposal["proposal_text"],
+                        "influence_direction": dir,
+                    }
                 )
 
         self.eval_all_samples(recorder, samples * self.n_samples)

@@ -29,7 +29,7 @@ class ChainOfThoughtCompletionFn(CompletionFn):
         extract_completion_fn: str = None,
         registry: Registry = None,
         registry_path: str = None,
-        **kwargs
+        **kwargs,
     ) -> None:
         registry = Registry() if not registry else registry
         if registry_path:

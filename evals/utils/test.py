@@ -17,6 +17,8 @@ class TestCompletionFn(CompletionFn):
         self.completion = completion
 
     def __call__(
-        self, prompt: Union[OpenAICreatePrompt, OpenAICreateChatPrompt, Prompt], **kwargs
+        self,
+        prompt: Union[OpenAICreatePrompt, OpenAICreateChatPrompt, Prompt],
+        **kwargs,
     ) -> CompletionResult:
         return TestCompletionResult(self.completion)
